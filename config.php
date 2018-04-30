@@ -7,7 +7,10 @@ if($_SERVER['DOCUMENT_ROOT']=='C:/xampp2/htdocs'){
 	define('FILEROOT', 'C:/xampp2/htdocs/stripeTester/');
 	define('IMAGEPATH', FILEROOT.'img/');
 	define('UPLOADPATH', FILEROOT);
-
+  define('STRIPE_PK', 'pk_live_fROuSbVdmheVpp9vdgvzicnh');
+  define('STRIPE_SK', 'sk_live_8UauqtToirc5i19k1N7dRhqA');
+  "secret_key"      => "sk_test_1XnbTQiZJTwMFiOG6LHDJZqW",
+  "publishable_key" => "pk_test_rgMvynjRhhJUsshWqA0TZo8H"
 	class DataBase{
 		static function getConnection() {
 			// Create connection
@@ -19,6 +22,8 @@ if($_SERVER['DOCUMENT_ROOT']=='C:/xampp2/htdocs'){
 	define('FILEROOT', '');
 	define('IMAGEPATH', FILEROOT.'img/');
 	define('UPLOADPATH', $_SERVER['DOCUMENT_ROOT']);
+  define('STRIPE_PK', 'pk_live_fROuSbVdmheVpp9vdgvzicnh');
+  define('STRIPE_SK', 'sk_live_8UauqtToirc5i19k1N7dRhqA');
 
 	class DataBase{
 		  function getConnection() {
@@ -43,8 +48,8 @@ if($_SERVER['DOCUMENT_ROOT']=='C:/xampp2/htdocs'){
 
 
 $stripe = array(
-  "secret_key"      => "sk_test_1XnbTQiZJTwMFiOG6LHDJZqW",
-  "publishable_key" => "pk_test_rgMvynjRhhJUsshWqA0TZo8H"
+  "secret_key"      => STRIPE_SK,
+  "publishable_key" => STRIPE_PK
 );
 
 \Stripe\Stripe::setApiKey($stripe['secret_key']);
