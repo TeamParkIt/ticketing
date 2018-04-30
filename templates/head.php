@@ -70,10 +70,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>                        
           </button>
-          <a class="navbar-brand" href='<?php echo SERVERROOT ?>index.php' id="logo-container"><div>Parking Collection Systems</div></a>
+          <a class="navbar-brand" href='<?php echo SERVERROOT ?>index.php' id="logo-container"><p>Parking Collection Systems</p></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
-
+          <ul class="nav navbar-nav navbar-right">            
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScaPNCWx6GvLvshY44N5KZ7wmsqcfGnTIXRxZ5C4END6dmm_Q/viewform?usp=sf_link">Dispute Ticket</a></li>
+           
+          </ul>
           
         </div>
       </div>

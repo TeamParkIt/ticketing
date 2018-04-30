@@ -55,7 +55,16 @@ $stripe = array(
 
 
 class Ticket{
+  function getLicenseByTicketID ($ID, $transConn){
+    $conn = $transConn ? $transConn : DataBase::getConnection();
 
+      $stmt = $conn->prepare("SELECT * FROM ticket WHERE number=?");
+      $stmt->bind_param("s", $ID);
+      // Execute
+      $stmt->execute();
+      $result = $stmt->get_result();
+      return $result->fetch_array()['licensePlate'];;
+  }
   function issueTicket($licensePlate, $number, $transConn){
     $conn = $transConn ? $transConn : DataBase::getConnection();
 

@@ -1,5 +1,9 @@
 <?php require_once('./config.php'); 
 Includes::getHead();
+?>
+<div class="container">
+	<div class="box">
+<?php
 if(isset($stripe['secret_key'])  && isset($_POST['ticketID'])){
 	$ticket="";
 	if(Ticket::getTicketByNumber($_POST['ticketID'], null)){
@@ -7,7 +11,8 @@ if(isset($stripe['secret_key'])  && isset($_POST['ticketID'])){
 		$chargeAmount = $ticket['charge'];
 		Includes::getChargeForm($stripe['publishable_key'], $chargeAmount);
 	}else{
-		echo "no ticket found";
+		echo "<div class='errorMessage'>No ticket found. Check violation number.</div>";
+		Includes::getEntryForm();
 	}
 	
 
@@ -17,3 +22,5 @@ if(isset($stripe['secret_key'])  && isset($_POST['ticketID'])){
 
 
 ?>
+	</div>
+</div>
