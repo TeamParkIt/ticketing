@@ -8,6 +8,9 @@ $charge->createCharge(Ticket::getTicketByNumber($_POST['ticketID'], null)->fetch
 Ticket::payoffTicket($_POST['ticketID'], null);
 
 ?>
-
-<h1>Ticket <?php echo $_POST['ticketID']; ?> Successfully Processed</h1>
-<p>We have cleared your license plate of this violation.</p>
+<div class="container">
+	<div class="box">
+		<h1 style="color: red;">Ticket <?php echo $_POST['ticketID']; ?> Successfully Processed</h1>
+		<p>We have cleared your license plate of this violation.</p>
+	</div>
+</div>

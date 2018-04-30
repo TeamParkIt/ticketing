@@ -81,7 +81,7 @@ class Ticket{
     $conn = $transConn ? $transConn : DataBase::getConnection();
 
       $stmt = $conn->prepare("UPDATE ticket SET paid=1 WHERE number=?");
-      $stmt->bind_param("ss",  $number);
+      $stmt->bind_param("s",  $number);
       // Execute
       if($stmt->execute()){
         return ;
