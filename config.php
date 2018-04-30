@@ -7,10 +7,9 @@ if($_SERVER['DOCUMENT_ROOT']=='C:/xampp2/htdocs'){
 	define('FILEROOT', 'C:/xampp2/htdocs/stripeTester/');
 	define('IMAGEPATH', FILEROOT.'img/');
 	define('UPLOADPATH', FILEROOT);
-  define('STRIPE_PK', 'pk_live_fROuSbVdmheVpp9vdgvzicnh');
-  define('STRIPE_SK', 'sk_live_8UauqtToirc5i19k1N7dRhqA');
-  "secret_key"      => "sk_test_1XnbTQiZJTwMFiOG6LHDJZqW",
-  "publishable_key" => "pk_test_rgMvynjRhhJUsshWqA0TZo8H"
+  define('STRIPE_PK', "pk_test_rgMvynjRhhJUsshWqA0TZo8H");
+  define('STRIPE_SK', "sk_test_1XnbTQiZJTwMFiOG6LHDJZqW");
+
 	class DataBase{
 		static function getConnection() {
 			// Create connection
