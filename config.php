@@ -14,8 +14,8 @@ if($_SERVER['DOCUMENT_ROOT']=='C:/xampp2/htdocs'){
 			return mysqli_connect("localhost", "root", "", "ticket");
 	    }
 	}	
-}elseif($_SERVER['DOCUMENT_ROOT']=='/home/sglbphyn/dev.parkit.market'){
-	define('SERVERROOT', 'http://dev.parkit.market/');
+}elseif($_SERVER['DOCUMENT_ROOT']=='/var/www/html/ticketing'){
+	define('SERVERROOT', 'ticketpay.online');
 	define('FILEROOT', '');
 	define('IMAGEPATH', FILEROOT.'img/');
 	define('UPLOADPATH', $_SERVER['DOCUMENT_ROOT']);
@@ -23,21 +23,21 @@ if($_SERVER['DOCUMENT_ROOT']=='C:/xampp2/htdocs'){
 	class DataBase{
 		  function getConnection() {
 			// Create connection
-			return mysqli_connect("localhost", "sglbphyn", "ggF$22qsd", "sglbphyn_landingpage");
+			return mysqli_connect("localhost", "rootUser", "%MK?V`9m(", "ticket");
 	    }
 	}
 }else{
-	define('SERVERROOT', 'http://parkit.market/');
-		define('FILEROOT', '');
-		define('IMAGEPATH', FILEROOT.'img/');
-	define('UPLOADPATH', $_SERVER['DOCUMENT_ROOT']);
+	define('SERVERROOT', 'ticketpay.online');
+  define('FILEROOT', '');
+  define('IMAGEPATH', FILEROOT.'img/');
+  define('UPLOADPATH', $_SERVER['DOCUMENT_ROOT']);
 
-		class DataBase{
-			  function getConnection() {
-				// Create connection
-				return mysqli_connect("localhost", "sglbphyn", "ggF$22qsd", "sglbphyn_landingpage");
-		    }
-		}
+  class DataBase{
+      function getConnection() {
+      // Create connection
+      return mysqli_connect("localhost", "rootUser", "%MK?V`9m(", "ticket");
+      }
+  }
 }
 
 

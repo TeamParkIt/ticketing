@@ -9,6 +9,8 @@ if(isset($stripe['secret_key'])  && isset($_POST['ticketID'])){
 	}else{
 		echo "no ticket found";
 	}
+	
+
 }else{
 	Includes::getEntryForm();
 }
