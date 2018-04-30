@@ -15,7 +15,7 @@ if($_SERVER['DOCUMENT_ROOT']=='C:/xampp2/htdocs'){
 	    }
 	}	
 }elseif($_SERVER['DOCUMENT_ROOT']=='/var/www/html/ticketing'){
-	define('SERVERROOT', 'www.ticketpay.online/');
+	define('SERVERROOT', 'http://www.ticketpay.online/');
 	define('FILEROOT', '');
 	define('IMAGEPATH', FILEROOT.'img/');
 	define('UPLOADPATH', $_SERVER['DOCUMENT_ROOT']);
