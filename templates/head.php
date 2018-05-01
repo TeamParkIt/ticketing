@@ -11,7 +11,7 @@
     <meta name="author" content="">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
-    <title>Monthly Parking - ParkIt</title>
+    <title>Parking Collection Systems</title>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
