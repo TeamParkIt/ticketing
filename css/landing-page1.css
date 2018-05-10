@@ -197,6 +197,16 @@ p.copyright {
     min-width: 40%;
     text-align: center;
     color: white;
+    margin: 15px 0px;
+}
+.buttonRed{
+  background: red;
+  color: white;
+}
+
+.buttonOrange{
+  background: orange;
+  color: white;
 }
 .buttonHeader{
         text-decoration: none;
@@ -720,5 +730,6 @@ font-size: 25px;
 }
 
 #logo-container{
-  font-size:30px;
+  font-size:25px;
 }
+

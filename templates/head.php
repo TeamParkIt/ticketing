@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <title>Parking Collection Systems</title>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
@@ -21,6 +21,12 @@
     <script src="https://momentjs.com/downloads/moment.js"></script>
     <link href="<?php echo SERVERROOT ?>font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+      <script type="text/javascript" src="<?php echo SERVERROOT ?>/bower_components/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="<?php echo SERVERROOT ?>/bower_components/moment/min/moment.min.js"></script>
+  <script type="text/javascript" src="<?php echo SERVERROOT ?>/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="<?php echo SERVERROOT ?>/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+  <link rel="stylesheet" href="<?php echo SERVERROOT ?>/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="<?php echo SERVERROOT ?>/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

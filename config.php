@@ -65,11 +65,11 @@ class Ticket{
       $result = $stmt->get_result();
       return $result->fetch_array()['licensePlate'];;
   }
-  function issueTicket($licensePlate, $number, $transConn){
+  function issueTicket($licensePlate, $number, $dateTime, $transConn){
     $conn = $transConn ? $transConn : DataBase::getConnection();
 
-      $stmt = $conn->prepare("UPDATE ticket SET licensePlate=? WHERE number=?");
-      $stmt->bind_param("ss", $licensePlate, $number);
+      $stmt = $conn->prepare("UPDATE ticket SET licensePlate=?, dateTime = ? WHERE number=?");
+      $stmt->bind_param("sss", $licensePlate, $dateTime, $number);
       // Execute
       if($stmt->execute()){
         return $stmt->affected_rows;
@@ -112,6 +112,58 @@ class Ticket{
       }
       
   }
+  function checkPayment($number, $transConn){
+    $conn = $transConn ? $transConn : DataBase::getConnection();
+
+      $stmt = $conn->prepare("SELECT * FROM ticket WHERE number=? AND paid=1");
+      $stmt->bind_param("s", $number);
+      // Execute
+      $stmt->execute();
+      $result = $stmt->get_result();
+      if($stmt->affected_rows){
+        return $result;
+      }
+      
+  }
+  function getTicketsByLicensePlate($licensePlate, $transConn){
+    $conn = $transConn ? $transConn : DataBase::getConnection();
+
+      $stmt = $conn->prepare("SELECT * FROM ticket WHERE ticket.licensePlate=?");
+      $stmt->bind_param("s", $licensePlate);
+      // Execute
+      $stmt->execute();
+      $result = $stmt->get_result();
+      return $result;
+  }
+  function getNumberOfTicketsByPlate($licensePlate, $transConn){
+    $conn = $transConn ? $transConn : DataBase::getConnection();
+
+      $stmt = $conn->prepare("SELECT COUNT(*) FROM `ticket` WHERE `licensePlate`= ?");
+      $stmt->bind_param("s", $licensePlate);
+      // Execute
+      $stmt->execute();
+      $result = $stmt->get_result()->fetch_assoc()['COUNT(*)'];
+
+      if($stmt->affected_rows){
+        return $result;
+      }
+  }
+  function bulkAdd($password, $lowest, $highest, $LID, $charge, $transConn){
+    if($password = 'FindMeParking@1'){
+      $conn = $transConn ? $transConn : DataBase::getConnection();
+      for($i = $lowest; $i <= $highest; $i++){
+        $stmt = $conn->prepare("INSERT INTO ticket (fk_lot, charge, number)values (?, ?, ?)");
+        $stmt->bind_param("iii", $LID, $charge, $i);
+        // Execute
+        $stmt->execute();
+      }
+      
+      $result = $stmt->get_result();
+      if($stmt->affected_rows){
+        return $result;
+      }
+    } 
+  }
 }
 class Lot{
   function getLotByTicketNumber($number, $transConn){
@@ -133,11 +185,12 @@ class Lot{
       $result = $stmt->get_result();
       return $result;
   }
+
 }
 
 class Charge{
 
-	function getChargeByID(){
+	function getChargeByID($ID){
 		$conn = $transConn ? $transConn : DataBase::getConnection();
 
     	$stmt = $conn->prepare("SELECT * FROM charge WHERE charge.ID=?");
@@ -148,7 +201,55 @@ class Charge{
     	return $result;
 	}
 }
+class Warning {
+  function __construct($fk_LID, $licensePlate){
+    $this->fk_LID = $fk_LID;
+    $this->licensePlate = $licensePlate;
+  }
+  function getChargeByID($ID){
+    $conn = $transConn ? $transConn : DataBase::getConnection();
 
+      $stmt = $conn->prepare("SELECT * FROM warning WHERE warning.ID=?");
+      $stmt->bind_param("i", $ID);
+      // Execute
+      $stmt->execute();
+      $result = $stmt->get_result();
+      return $result;
+  }
+  function createWarning($dateTime, $transConn){
+    $conn = $transConn ? $transConn : DataBase::getConnection();
+
+      $stmt = $conn->prepare("INSERT INTO warning (fk_LotID, licensePlate, dateTime)values (?, ?, ?)");
+      $stmt->bind_param("iss", $this->fk_LID, $this->licensePlate, $dateTime);
+      // Execute
+      $stmt->execute();
+      $result = $stmt->get_result();
+      return $result;
+  }
+  function getWarningsByLicensePlate($licensePlate, $transConn){
+    $conn = $transConn ? $transConn : DataBase::getConnection();
+
+      $stmt = $conn->prepare("SELECT * FROM warning WHERE warning.licensePlate=?");
+      $stmt->bind_param("s", $licensePlate);
+      // Execute
+      $stmt->execute();
+      $result = $stmt->get_result();
+      return $result;
+  }
+  function getNumberOfWarningsByPlate($licensePlate, $transConn){
+    $conn = $transConn ? $transConn : DataBase::getConnection();
+
+      $stmt = $conn->prepare("SELECT COUNT(*) FROM `warning` WHERE `licensePlate`= ?");
+      $stmt->bind_param("s", $licensePlate);
+      // Execute
+      $stmt->execute();
+      $result = $stmt->get_result()->fetch_assoc()['COUNT(*)'];
+
+      if($stmt->affected_rows){
+        return $result;
+      }
+  }
+}
 class Includes{
 	function getChargeForm($pubKey, $chargeAmount){
 		return include(FILEROOT.'templates/chargeform.php');
@@ -164,6 +265,24 @@ class Includes{
   }
   function getAddTicketForm(){
     return include(FILEROOT.'templates/addform.php');
+  }
+  function getAddWarningForm(){
+    return include(FILEROOT.'templates/warnform.php');
+  }
+  function getCheckForm(){
+    return include(FILEROOT.'templates/checkform.php');
+  }
+  function getWarningRecord($plateNumber){
+    return include(FILEROOT.'templates/warningRecord.php');
+  }
+  function getTicketRecord($plateNumber){
+    return include(FILEROOT.'templates/ticketrecord.php');
+  }
+  function getTicketOrWarn(){
+    return include(FILEROOT.'templates/ticketorwarn.php');
+  }
+  function getDateTime(){
+    return include(FILEROOT.'templates/datetimepicker.php');
   }
 }
 
