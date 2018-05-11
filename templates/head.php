@@ -76,7 +76,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>                        
           </button>
-          <a class="navbar-brand" href='<?php echo SERVERROOT ?>index.php' id="logo-container"><p>Parking Collection Systems</p></a>
+          <a class="navbar-brand" href='<?php echo SERVERROOT ?>index.php' id="logo-container"><p>Parking Collection</p></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">            
