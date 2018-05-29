@@ -5,7 +5,7 @@
 	<input type="text" name="licensePlate" required="" placeholder="License Plate (no dashes)"><br><br>
 					
 	<?php Includes::getDateTime();?>
-	<input type="submit" name="submit" class="button">
+	<input type="submit" name="submit" class="button" value="Warning">
 	</div>
 </form>
 

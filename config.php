@@ -149,7 +149,7 @@ class Ticket{
       }
   }
   function bulkAdd($password, $lowest, $highest, $LID, $charge, $transConn){
-    if($password = 'FindMeParking@1'){
+    if($password = 'Findmeparking@1'){
       $conn = $transConn ? $transConn : DataBase::getConnection();
       for($i = $lowest; $i <= $highest; $i++){
         $stmt = $conn->prepare("INSERT INTO ticket (fk_lot, charge, number)values (?, ?, ?)");
@@ -283,6 +283,55 @@ class Includes{
   }
   function getDateTime(){
     return include(FILEROOT.'templates/datetimepicker.php');
+  }
+  function getAddWhiteList(){
+    return include(FILEROOT.'templates/whitelist.php');
+  }
+}
+
+class WhiteList{
+  function insertWhiteListItem($plateNumber, $transConn){
+    $conn = $transConn ? $transConn : DataBase::getConnection();
+
+      $stmt = $conn->prepare("INSERT INTO whitelist (licensePlate)values (?)");
+      $stmt->bind_param("s", $plateNumber);
+      // Execute
+      $stmt->execute();
+      $result = $stmt->get_result();
+      return $result;
+  }
+  function deleteWhiteListItem($plateNumber, $transConn){
+    $conn = $transConn ? $transConn : DataBase::getConnection();
+
+      $stmt = $conn->prepare("DELETE FROM whitelist WHERE ID = ?");
+      $stmt->bind_param("i", $plateNumber);
+      // Execute
+      $stmt->execute();
+      $result = $stmt->get_result();
+      return $result;
+  }
+  function getWhiteList($transConn){
+    $conn = $transConn ? $transConn : DataBase::getConnection();
+
+      $stmt = $conn->prepare("SELECT * FROM whitelist");
+
+      // Execute
+      $stmt->execute();
+      $result = $stmt->get_result();
+      return $result;
+  }
+  function checkWhiteList($plateNumber, $transConn){
+    $conn = $transConn ? $transConn : DataBase::getConnection();
+
+      $stmt = $conn->prepare("SELECT * FROM whitelist WHERE licensePlate=?");
+      $stmt->bind_param("s", $plateNumber);
+      // Execute
+      $stmt->execute();
+      $result = $stmt->get_result();
+
+      if($stmt->affected_rows){
+        return $result;
+      }
   }
 }
 
