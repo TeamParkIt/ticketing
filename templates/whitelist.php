@@ -34,6 +34,6 @@
 
 <?php
 	if(isset($_POST['submitPlate'])){
-		WhiteList::insertWhiteListItem($_POST['licensePlate'], null);
+		if(WhiteList::insertWhiteListItem($_POST['licensePlate'], null)){echo "Plate added";}
 	}
 ?>

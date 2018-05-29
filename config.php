@@ -298,7 +298,9 @@ class WhiteList{
       // Execute
       $stmt->execute();
       $result = $stmt->get_result();
-      return $result;
+      if($stmt->affected_rows){
+        return true;
+      }
   }
   function deleteWhiteListItem($plateNumber, $transConn){
     $conn = $transConn ? $transConn : DataBase::getConnection();
