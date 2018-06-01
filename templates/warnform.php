@@ -2,7 +2,7 @@
 <form method="POST">
 	<div class="container">
 	<input type="hidden" name="fk_lot">
-	<input type="text" name="licensePlate" required="" placeholder="License Plate (no dashes)"><br><br>
+	<input type="text" name="licensePlate" required="" value="<?php if($_GET['plate']){echo $_GET['plate'];} ?>" placeholder="License Plate (no dashes)"><br><br>
 					
 	<?php Includes::getDateTime();?>
 	<input type="submit" name="submit" class="button" value="Warning">
